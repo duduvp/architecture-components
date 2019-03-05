@@ -7,13 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import br.com.bestbrewer.persistence.converter.DateConverter
-import br.com.bestbrewer.persistence.entity.Word
+import br.com.bestbrewer.persistence.entity.WordEntity
 import br.com.bestbrewer.persistence.dao.WordDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Word::class], version = 1)
+@Database(entities = [WordEntity::class], version = 1)
 @TypeConverters(DateConverter::class)
 public abstract class AppDatabase : RoomDatabase() {
 
@@ -53,9 +53,9 @@ public abstract class AppDatabase : RoomDatabase() {
         fun populateDatabase(wordDao: WordDao) {
             wordDao.deleteAll()
 
-            var word = Word("Hello")
+            var word = WordEntity("Hello")
             wordDao.insert(word)
-            word = Word("World!")
+            word = WordEntity("World!")
             wordDao.insert(word)
         }
     }

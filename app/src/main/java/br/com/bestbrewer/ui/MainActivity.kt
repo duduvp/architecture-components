@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.bestbrewer.R
-import br.com.bestbrewer.persistence.entity.Word
+import br.com.bestbrewer.persistence.entity.WordEntity
 import br.com.bestbrewer.ui.adapter.WordListAdapter
 import br.com.bestbrewer.viewmodel.WordViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
-                val word = Word(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
+                val word = WordEntity(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
                 wordViewModel.insert(word)
             }
         } else {

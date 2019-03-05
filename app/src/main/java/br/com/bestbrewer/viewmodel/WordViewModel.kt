@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import br.com.bestbrewer.persistence.AppDatabase
-import br.com.bestbrewer.persistence.entity.Word
+import br.com.bestbrewer.persistence.entity.WordEntity
 import br.com.bestbrewer.persistence.repository.WordRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
     private val scope = CoroutineScope(coroutineContext)
 
     private val repository: WordRepository
-    val allWords: LiveData<List<Word>>
+    val allWords: LiveData<List<WordEntity>>
 
     init {
         val wordsDao = AppDatabase.getDatabase(application, scope).wordDao()
@@ -28,8 +28,8 @@ class WordViewModel(application: Application) : AndroidViewModel(application) {
         allWords = repository.allWords
     }
 
-    fun insert(word: Word) = scope.launch(Dispatchers.IO) {
-        repository.insert(word)
+    fun insert(wordEntity: WordEntity) = scope.launch(Dispatchers.IO) {
+        repository.insert(wordEntity)
     }
 
     override fun onCleared() {

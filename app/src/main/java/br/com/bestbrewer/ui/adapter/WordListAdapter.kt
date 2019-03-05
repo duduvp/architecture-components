@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.bestbrewer.R
-import br.com.bestbrewer.persistence.entity.Word
+import br.com.bestbrewer.persistence.entity.WordEntity
 
 class WordListAdapter internal constructor(context: Context) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var words = emptyList<Word>()
+    private var words = emptyList<WordEntity>()
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.textView)
@@ -28,8 +28,8 @@ class WordListAdapter internal constructor(context: Context) : RecyclerView.Adap
         holder.wordItemView.text = current.word
     }
 
-    internal fun setWords(words: List<Word>) {
-        this.words = words
+    internal fun setWords(wordEntities: List<WordEntity>) {
+        this.words = wordEntities
         notifyDataSetChanged()
     }
 
