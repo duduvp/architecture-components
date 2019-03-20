@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import br.com.bestbrewer.persistence.AppDatabase
-import br.com.bestbrewer.persistence.entity.WordEntity
+import br.com.bestbrewer.persistence.entity.old.WordEntity
 import br.com.bestbrewer.persistence.repository.WordRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.bestbrewer.R
-import br.com.bestbrewer.persistence.entity.WordEntity
+import br.com.bestbrewer.persistence.entity.old.WordEntity
 
 class WordListAdapter internal constructor(context: Context) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 

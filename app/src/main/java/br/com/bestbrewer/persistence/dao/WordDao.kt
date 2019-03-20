@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import br.com.bestbrewer.persistence.entity.WordEntity
+import br.com.bestbrewer.persistence.entity.old.WordEntity
 
 @Dao
 interface WordDao {

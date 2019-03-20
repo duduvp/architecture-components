@@ -1,4 +1,4 @@
-package br.com.bestbrewer.persistence.entity
+package br.com.bestbrewer.persistence.entity.old
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

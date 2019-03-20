@@ -7,15 +7,16 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import br.com.bestbrewer.persistence.converter.DateConverter
-import br.com.bestbrewer.persistence.entity.WordEntity
+import br.com.bestbrewer.persistence.entity.old.WordEntity
 import br.com.bestbrewer.persistence.dao.WordDao
+import br.com.bestbrewer.persistence.entity.Receita
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [WordEntity::class], version = 1)
+@Database(entities = [WordEntity::class, Receita::class], version = 1)
 @TypeConverters(DateConverter::class)
-public abstract class AppDatabase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun wordDao(): WordDao
 

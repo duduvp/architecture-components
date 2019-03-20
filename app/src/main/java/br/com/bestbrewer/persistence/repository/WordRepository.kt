@@ -2,7 +2,7 @@ package br.com.bestbrewer.persistence.repository
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import br.com.bestbrewer.persistence.entity.WordEntity
+import br.com.bestbrewer.persistence.entity.old.WordEntity
 import br.com.bestbrewer.persistence.dao.WordDao
 
 class WordRepository(private val wordDao: WordDao) {
