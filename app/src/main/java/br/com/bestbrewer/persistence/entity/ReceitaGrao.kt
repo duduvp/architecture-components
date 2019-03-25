@@ -1,28 +1,22 @@
 package br.com.bestbrewer.persistence.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity(
     tableName = "receita_grao",
     foreignKeys = [ForeignKey(
-        entity = Grao::class,
+        entity = UnidadeMedida::class,
         parentColumns = arrayOf("id"),
-        childColumns = arrayOf("grao_id"),
-        onUpdate = ForeignKey.CASCADE,
-        onDelete = ForeignKey.NO_ACTION
-    ), ForeignKey(
-        entity = Receita::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("receita_id"),
+        childColumns = arrayOf("unidade_medida_id"),
         onUpdate = ForeignKey.CASCADE,
         onDelete = ForeignKey.NO_ACTION
     )]
 )
 data class ReceitaGrao(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long,
-    @ColumnInfo(name = "grao_id") var graoId: Long,
-    @ColumnInfo(name = "receita_id") var receitaId: Long
+    @Embedded var receita: Receita,
+    @Relation(parentColumn = "id", entityColumn = "receitaId", entity = Grao::class) var graoList: List<Grao>,
+    @Relation(parentColumn = "id", entityColumn = "receitaId", entity = Grao::class) var graoList: List<Grao>,
+    @ColumnInfo(name = "quantidade") var quantidade: Double,
+    @ColumnInfo(name = "numero_lote") var numeroLote: String
 )

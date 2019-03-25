@@ -5,26 +5,28 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
 import br.com.bestbrewer.persistence.converter.DateConverter
-import br.com.bestbrewer.persistence.entity.old.WordEntity
-import br.com.bestbrewer.persistence.dao.WordDao
-import br.com.bestbrewer.persistence.entity.Receita
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import br.com.bestbrewer.persistence.dao.*
+import br.com.bestbrewer.persistence.entity.*
 
-@Database(entities = [WordEntity::class, Receita::class], version = 1)
+@Database(
+    entities = [Grao::class, Lupulo::class, Receita::class, ReceitaGrao::class, ReceitaLupulo::class],
+    version = 1
+)
 @TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun graoDao(): GraoDao
+    abstract fun lupuloDao(): LupuloDao
+    abstract fun receitaDao(): ReceitaDao
+    abstract fun receitaGraoDao(): ReceitaGraoDao
+    abstract fun receitaLupuloDao(): ReceitaLupuloDao
 
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase {
+        fun getDatabase(context: Context): AppDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -34,30 +36,10 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "app_database"
-                ).addCallback(AppDatabaseCallback(scope)).build()
+                ).build()
                 INSTANCE = instance
                 return instance
             }
-        }
-    }
-
-    private class AppDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
-        override fun onOpen(db: SupportSQLiteDatabase) {
-            super.onOpen(db)
-            INSTANCE?.let { database ->
-                scope.launch(Dispatchers.IO) {
-                    populateDatabase(database.wordDao())
-                }
-            }
-        }
-
-        fun populateDatabase(wordDao: WordDao) {
-            wordDao.deleteAll()
-
-            var word = WordEntity("Hello")
-            wordDao.insert(word)
-            word = WordEntity("World!")
-            wordDao.insert(word)
         }
     }
 }
