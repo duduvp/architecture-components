@@ -22,13 +22,13 @@ import androidx.room.PrimaryKey
     )]
 )
 data class ReceitaLupulo(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long,
-    @ColumnInfo(name = "lupulo_id") var lupuloId: Long,
-    @ColumnInfo(name = "receita_id") var receitaId: Long,
-    @ColumnInfo(name = "unidade_medida_id") var unidadeMedidaId: Long,
-    @ColumnInfo(name = "quantidade") var quantidade: Double,
-    @ColumnInfo(name = "tempo_fervura") var tempoFervura: Int,
-    @ColumnInfo(name = "tempo_fervura_noventa") var tempoFervuraNoventa: Int,
-    @ColumnInfo(name = "numero_lote") var numeroLote: String
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long,
+    @ColumnInfo(name = "lupulo_id") val lupuloId: Long,
+    @ColumnInfo(name = "receita_id") val receitaId: Long,
+    @ColumnInfo(name = "unidade_medida_id") val unidadeMedidaId: Long,
+    @ColumnInfo(name = "quantidade") val quantidade: Double,
+    @ColumnInfo(name = "tempo_fervura") val tempoFervura: Int,
+    @ColumnInfo(name = "tempo_fervura_noventa") val tempoFervuraNoventa: Int,
+    @ColumnInfo(name = "numero_lote") val numeroLote: String
 
 )

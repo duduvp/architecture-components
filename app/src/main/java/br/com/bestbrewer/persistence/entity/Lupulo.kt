@@ -7,10 +7,10 @@ import java.util.*
 
 @Entity(tableName = "lupulo")
 data class Lupulo(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long,
-    @ColumnInfo(name = "nome") var nome: String,
-    @ColumnInfo(name = "teor_alcoolico") var teorAlcoolico: String,
-    @ColumnInfo(name = "lote") var lote: String,
-    @ColumnInfo(name = "cadastro") var cadastro: Date = Date(),
-    @ColumnInfo(name = "status") var status: Boolean = true
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long,
+    @ColumnInfo(name = "nome") val nome: String,
+    @ColumnInfo(name = "teor_alcoolico") val teorAlcoolico: String,
+    @ColumnInfo(name = "lote") val lote: String,
+    @ColumnInfo(name = "cadastro") val cadastro: Date = Date(),
+    @ColumnInfo(name = "status") val status: Boolean = true
 )

@@ -13,10 +13,9 @@ import androidx.room.*
     )]
 )
 data class ReceitaGrao(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Long,
-    @Embedded var receita: Receita,
-    @Relation(parentColumn = "id", entityColumn = "receitaId", entity = Grao::class) var graoList: List<Grao>,
-    @Relation(parentColumn = "id", entityColumn = "receitaId", entity = Grao::class) var graoList: List<Grao>,
-    @ColumnInfo(name = "quantidade") var quantidade: Double,
-    @ColumnInfo(name = "numero_lote") var numeroLote: String
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long,
+    @Embedded val receita: Receita,
+    @Relation(parentColumn = "id", entityColumn = "receitaId", entity = Grao::class) val graoList: List<Grao>,
+    @ColumnInfo(name = "quantidade") val quantidade: Double,
+    @ColumnInfo(name = "numero_lote") val numeroLote: String
 )
